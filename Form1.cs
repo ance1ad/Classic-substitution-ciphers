@@ -17,12 +17,6 @@ namespace Cipher
         }
 
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void PrintMatrix(string[,] keyMatrix, int size, TextBox textbox)
         {
             string str = "";
@@ -38,6 +32,8 @@ namespace Cipher
             }
             
         }
+
+
         private void PrintIndexMatrix(string[,] keyMatrix, int size)
         {
             string str = "";
@@ -50,6 +46,7 @@ namespace Cipher
                 str += "\n";
             }
         }
+
         private void CreateMatrix(string[,] m, string alph, string key)
         {
             int k = 0; // итератор для слова
@@ -73,6 +70,7 @@ namespace Cipher
                 }
             }
         }
+
         private void FindIndexMatrix(string[,] m, string let, int[] indexes) {
             for (int i = 0; i < 6; i++) {
                 for (int j = 0; j < 6; j++) {
@@ -83,6 +81,7 @@ namespace Cipher
                 }
             }
         }
+
 
         private void GetBigramIndexMatrix(string message, string[,] m, int[] biCoord) {
             string str = "";
@@ -96,6 +95,8 @@ namespace Cipher
             }
             str = biCoord[0].ToString() + biCoord[1].ToString() + " " + biCoord[2].ToString() + biCoord[3].ToString();
         }
+
+
         private string BigramCorrect(string str)
         {
             // уберем повторы
@@ -111,6 +112,7 @@ namespace Cipher
                 str = str.Insert(str.Length, emptySymbol);
             return str;
         }
+
 
         private string BigramCoding(string[,] m, int[] coord, string text) { // c - координаты пары
             string str = "";
@@ -146,20 +148,20 @@ namespace Cipher
             int str1 = coord[0]; int stolb1 = coord[1];
             int str2 = coord[2]; int stolb2 = coord[3];
             int maxDist = 5;
-            // проверка, что буквы в 1 столбе
+            // Проверка, что буквы в 1 столбе
             if (stolb1 == stolb2)
             {
                 if (str1 == 0) str1 = maxDist; else str1--; // поменяли столбец
                 if (str2 == 0) str2 = maxDist; else str2--;
             }
 
-            // проверка, что буквы на 1 строке
+            // Проверка, что буквы на 1 строке
             else if (str1 == str2)
             {
                 if (stolb1 == 0) stolb1 = maxDist; else stolb1--; // поменяли строку
                 if (stolb2 == 0) stolb2 = maxDist; else stolb2--; // поменяли строку
             }
-            // проверка по прямоугольнику (строка и столбец разные)
+            // Проверка по прямоугольнику (строка и столбец разные)
             else
             {
                 int tempCoord = stolb1;
@@ -170,23 +172,24 @@ namespace Cipher
             return str;
         }
 
+
         public void Playfair(int behavior)
         {
             string message = textBox1.Text;
             message = message.ToLower();
             string keyword = textBox3.Text;
             keyword = keyword.ToLower();
-            // удалим повторяющиеся символы в ключевом слове
+            // Удалим повторяющиеся символы в ключевом слове
             keyword = DeleteRepeatSymbols(keyword);
             textBox3.Text = keyword;
-            // удалим из алфавита буквы не нужные в матрице
+            // Удалим из алфавита буквы не нужные в матрице
             alphabet = DeleteSymbols(alphabet, keyword);
-            // составим матрицу
+            // Составим матрицу
             string[,] keyMatrix = new string[6, 6];
             CreateMatrix(keyMatrix, alphabet, keyword);
             PrintMatrix(keyMatrix, 6, textBox5);
             message = BigramCorrect(message);
-            // дальше кодируем
+            // Дальше кодируем
             if(behavior == 1)
             {
                 string encodingtext;
@@ -195,14 +198,14 @@ namespace Cipher
                 {
                     biMessage = (message[i].ToString() + message[i + 1].ToString());
 
-                    // получаем 4 значения координаты пары 
+                    // Получаем 4 значения координаты пары 
                     int[] biCoord = new int[4];
                     GetBigramIndexMatrix(biMessage, keyMatrix, biCoord);
                     encodingtext = BigramCoding(keyMatrix, biCoord, biMessage);
                     textBox2.Text += encodingtext;
                 }
             }
-            else // расшифровыываем обратно
+            else // Расшифровыываем обратно
             {
                 string encodingtext = textBox2.Text;
                 string startMess;
@@ -211,18 +214,18 @@ namespace Cipher
                 {
                     startMess = (encodingtext[i].ToString() + encodingtext[i + 1].ToString());
 
-                    // получаем 4 значения координаты пары 
+                    // Получаем 4 значения координаты пары 
                     int[] biCoord = new int[4];
                     GetBigramIndexMatrix(startMess, keyMatrix, biCoord);
                     startMess = BigramDeCoding(keyMatrix, biCoord, startMess);
                     tempStr += startMess;
                 }
-                // доп обработка
+                // Доп обработка
                 if (tempStr[tempStr.Length - 1].ToString() == "ъ") // скорее всего этого символа там нет
                 {
                     tempStr = tempStr.Remove(tempStr.Length - 1, 1);
                 }
-                // теперь удалим доп буквы поставленные между повторяющимися буквами
+                // Теперь удалим доп буквы поставленные между повторяющимися буквами
                 for (int i = 1; i < tempStr.Length-1; i++)
                 {
                     if ((tempStr[i].ToString() == "ъ") && tempStr[i-1]== tempStr[i + 1])
@@ -234,15 +237,6 @@ namespace Cipher
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void CezarCode(int k, string message) 
         {
@@ -259,6 +253,7 @@ namespace Cipher
             textBox2.Text = codedMessage;            
         }
 
+
         private int FindPairForKey(int k)
         {
             for (int i = 0; i < 36; i++)
@@ -270,6 +265,8 @@ namespace Cipher
             }
             return 0;
         }
+
+
         private void MultiplyCode(int k, string message) // 2
         {
             string codedMessage = "";
@@ -296,7 +293,7 @@ namespace Cipher
         }
 
 
-        // кодировать 
+        // Кодировать 
         private void button1_Click(object sender, EventArgs e)
         {
             textBox2.Text = "";
@@ -388,7 +385,8 @@ namespace Cipher
             
         }
 
-        // декодировать
+
+        // Декодировать
         private void button2_Click(object sender, EventArgs e)
         {
             if (radioButton3.Checked) // 3 плейфеер
@@ -475,15 +473,9 @@ namespace Cipher
             }
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void FreqAnalysis()
         {
-            //textBox4
             string analys = "";
             double[] freqArr = new double[alphabet.Length];
             double prop;
@@ -491,16 +483,13 @@ namespace Cipher
             {
                 freqArr[i] = textBox2.Text.Count(f => (f == alphabet[i]));
                 prop = (freqArr[i] / textBox2.Text.Length);
-                // (i+1).ToString() + ") "
                 analys += alphabet[i] + " - " + prop +  "\r\n";
-
-                
             }
             textBox4.Text = analys;
         }
 
 
-        // загрузить из файла
+        // Загрузить из файла
         private async void button3_Click(object sender, EventArgs e)
         {
             string path = @"D:\BSTU\ИБ\1\Cipher\text.txt";
@@ -509,16 +498,11 @@ namespace Cipher
             textBox1.Text = fileText;
         }
 
-        // выгрузить в файл
+        // Выгрузить в файл
         private async void button4_Click(object sender, EventArgs e)
         {
             string path = @"D:\BSTU\ИБ\1\Cipher\playfireCoded.txt";
             await File.WriteAllTextAsync(path, textBox2.Text);
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)

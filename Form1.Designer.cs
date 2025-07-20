@@ -69,7 +69,6 @@
             label5.Size = new Size(105, 24);
             label5.TabIndex = 4;
             label5.Text = "ваш текст:";
-            label5.Click += label5_Click;
             // 
             // textBox1
             // 
@@ -195,7 +194,6 @@
             label3.Size = new Size(173, 24);
             label3.TabIndex = 4;
             label3.Text = "частотный анализ";
-            label3.Click += label3_Click;
             // 
             // textBox4
             // 
@@ -294,7 +292,6 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Шифрование";
-            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
