@@ -1,0 +1,17 @@
+D:\BSTU\ИБ\1\Cipher\bin\Debug\net6.0-windows\Cipher.exe
+D:\BSTU\ИБ\1\Cipher\bin\Debug\net6.0-windows\Cipher.deps.json
+D:\BSTU\ИБ\1\Cipher\bin\Debug\net6.0-windows\Cipher.runtimeconfig.json
+D:\BSTU\ИБ\1\Cipher\bin\Debug\net6.0-windows\Cipher.dll
+D:\BSTU\ИБ\1\Cipher\bin\Debug\net6.0-windows\Cipher.pdb
+D:\BSTU\ИБ\1\Cipher\obj\Debug\net6.0-windows\Cipher.csproj.AssemblyReference.cache
+D:\BSTU\ИБ\1\Cipher\obj\Debug\net6.0-windows\Cipher.Form1.resources
+D:\BSTU\ИБ\1\Cipher\obj\Debug\net6.0-windows\Cipher.csproj.GenerateResource.cache
+D:\BSTU\ИБ\1\Cipher\obj\Debug\net6.0-windows\Cipher.GeneratedMSBuildEditorConfig.editorconfig
+D:\BSTU\ИБ\1\Cipher\obj\Debug\net6.0-windows\Cipher.AssemblyInfoInputs.cache
+D:\BSTU\ИБ\1\Cipher\obj\Debug\net6.0-windows\Cipher.AssemblyInfo.cs
+D:\BSTU\ИБ\1\Cipher\obj\Debug\net6.0-windows\Cipher.csproj.CoreCompileInputs.cache
+D:\BSTU\ИБ\1\Cipher\obj\Debug\net6.0-windows\Cipher.dll
+D:\BSTU\ИБ\1\Cipher\obj\Debug\net6.0-windows\refint\Cipher.dll
+D:\BSTU\ИБ\1\Cipher\obj\Debug\net6.0-windows\Cipher.pdb
+D:\BSTU\ИБ\1\Cipher\obj\Debug\net6.0-windows\Cipher.genruntimeconfig.cache
+D:\BSTU\ИБ\1\Cipher\obj\Debug\net6.0-windows\ref\Cipher.dll
